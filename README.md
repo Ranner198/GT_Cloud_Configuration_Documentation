@@ -1,7 +1,7 @@
-# GT_Cloud_Computing_Documentation Homework
-Georgia Tech Cyber Security Cloud Network Diagram and Documentation Homework
+## GT_Cloud_Computing_Documentation Homework
+### Georgia Tech Cyber Security Cloud Network Diagram and Documentation Homework
 
-# Getting Start with Cloud Computing ??
+# Getting Started with Cloud Computing  
 
 #### Cloud Computing is becoming more and more of a necessary tool set for many companies, Cloud Computing has opened many gates to make more resources readily available and more accessible then ever before. Along with these it has also opened more attack vectors for criminals and other hacktivist groups, while cloud computing is a revolutionary idea you must weight your risks and accurately judge the added risks that come with it. All the major Cloud Computing companies such as Azure, Google, and Amazon come with the basic toolsets to help harden and protect your systems if used correctly and managed thoroughly. In this documentation I will run you through the basics of cloud computing in a Microsoft Azure cloud environment, and some ways on how to help prevent attacks against your cloud VMs with basic cloud security.  
 
@@ -22,7 +22,7 @@ Georgia Tech Cyber Security Cloud Network Diagram and Documentation Homework
 4.	A solid network connection is required since everything we will be doing is over the network via HTTP and SSH protocalls (We will go over these in later examples)
 ---
 
-# Step 1 Cloud Setup ??
+# Step 1 Cloud Setup
 
 #### First Things first, double check you have an azure account with a payment option selected that allows your to add resources to your Azure Portal located here: [Go to your Azure Portal ??](https://portal.azure.com/). If you can see this:
 ![Step1 Screenshot](./Resources/GettingStarted/Step1.jpg) 
