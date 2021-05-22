@@ -9,9 +9,9 @@
   
 ![Cloud Computing Image](./Resources/CloudComputingIEEE.jpg)
   
-### The cloud isn’t anything new either it has been around for a long time, it has just become more viable in the past decade with the ease of use and configuration. Now anyone can easily utilize cloud computing in todays era.  
+### The cloud isnï¿½t anything new either it has been around for a long time, it has just become more viable in the past decade with the ease of use and configuration. Now anyone can easily utilize cloud computing in todays era.  
   
-> “Cloud computing is really a no-brainer for any start-up because it allows you to test your business plan very quickly for little money. Every start-up, or even a division within a company that has an idea for something new, should be figuring out how to use cloud computing in its plan.” –Brad Jefferson, Animoto CEO. 2009.  
+> ï¿½Cloud computing is really a no-brainer for any start-up because it allows you to test your business plan very quickly for little money. Every start-up, or even a division within a company that has an idea for something new, should be figuring out how to use cloud computing in its plan.ï¿½ ï¿½Brad Jefferson, Animoto CEO. 2009.  
 
 ---  
 
@@ -113,3 +113,32 @@ then you are good to go!
 
 # Step 2 Cloud Configuration <a name="Step2"></a>  
 >In this step we will be configuring all of the new resources we have created above in [Step 1 Cloud Setup](#Step1)
+### NSG Configuration
+- From the [Home Portal](https://portal.azure.com/#home) navigate to *Resource Groups*
+- Next Navigate to your newly created Resource group
+- Now click on youe *JumpBoxProvisoner* VM
+- Copy your Public IP listed on the right side you will need it later
+- Where your public ip is  
+![Public IP Image](./Resources/GettingStarted/PublicIP.jpg)  
+
+- Back at the [Home Portal](https://portal.azure.com/#home) navigate to *Resource Groups*
+- Next Navigate to your newly created Resource group
+- Select your NSG you created
+- On the right side click on *Inbound security rules*
+- Next navigate to this website to figure out your public IP of your network [https://ip.me](https://ip.me/) and copy it, you will need it in a second
+- Back in your Azure portal click the ![+ Add](./Resources/GettingStarted/CreateRule.jpg) button
+- Configure with the following Parameters:
+	* Source: IP Addresses
+	* Source IP addresses/CIDR ranges: The public IP you copied from earlier (This allows only your public IP to have access into the network, which helps to protect it)
+	* Source port ranges: 22
+	* Destination: IP Addresses
+	* Destination IP addresses/CIDR ranges: (Your Jumpbox VM's public IP)
+	* Service: SSH
+	* Destination port ranges: 22
+	* Protocall: TCP
+	* Action: Allow
+	* Priority: 3000
+	* Name: JumpboxInboundSSH
+- Click on Add
+- You can validate everything has worked correctly with the Resource Group Created Successfully popup that will be prompted afterwards
+- Gif Tutorial ![Making A Virtual Machine GIF](./Resources/GettingStarted/.gif)  
