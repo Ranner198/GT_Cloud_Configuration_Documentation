@@ -9,9 +9,9 @@
   
 ![Cloud Computing Image](./Resources/CloudComputingIEEE.jpg)
   
-### The cloud isn�t anything new either it has been around for a long time, it has just become more viable in the past decade with the ease of use and configuration. Now anyone can easily utilize cloud computing in todays era.  
+### The cloud isn't anything new either it has been around for a long time, it has just become more viable in the past decade with the ease of use and configuration. Now anyone can easily utilize cloud computing in todays era.  
   
-> �Cloud computing is really a no-brainer for any start-up because it allows you to test your business plan very quickly for little money. Every start-up, or even a division within a company that has an idea for something new, should be figuring out how to use cloud computing in its plan.� �Brad Jefferson, Animoto CEO. 2009.  
+>Cloud computing is really a no-brainer for any start-up because it allows you to test your business plan very quickly for little money. Every start-up, or even a division within a company that has an idea for something new, should be figuring out how to use cloud computing in its plan. Brad Jefferson, Animoto CEO. 2009.  
 
 ---  
 
@@ -24,7 +24,8 @@
 	- VM - Virtual Machine
 	- VNet - Virtual Network
 	- VPN - Virtual Private Network
-	- NSG Network Security Group
+	- NSG - Network Security Group
+	- SSH - Secure Shell Protocol
 	
 ---
 
@@ -36,8 +37,7 @@
 then you are good to go!  
 
 ### Adding a Resource Group  
-
-- We are going to add a resource group to house our VMs and other resources that our VMs need for our first deployments.
+>We are going to add a resource group to house our VMs and other resources that our VMs need for our first deployments. This will make it easier to find and manage our resources later
 - Under the [Home Portal](https://portal.azure.com/#home) first click on the *Resource groups* button if you do not see it in the top like mine you can click on top search bar that reads: *Search resources, services, and docs (G+/)* and start typing in *Resource groups* and it will pop up.
 - Next Click on ![+Create](./Resources/GettingStarted/CreateButton.jpg) to add a new resource group
 - Now enter the name of the of your resouce group in the Resource group name field
@@ -48,7 +48,7 @@ then you are good to go!
 - Gif Tutorial ![Making A Resource Group GIF](./Resources/GettingStarted/MakingAResourceGroup.gif)
 
 ### Adding a Network Security Group  
-
+>We wull be adding a NSG to help protect our VMs from web traffic, this functions similar to a firewall where we can configure and tell it what type of traffic to allow or deny based off of rulesets we give
 - To make a new NSG first head to the [Home Portal](https://portal.azure.com/#home) click on the *Network security groups* button if you do not see it in the top like mine you can click on top search bar that reads: *Search resources, services, and docs (G+/)* and start typing in *Network security groups* and it will pop up.
 - Next Click on ![+Create](./Resources/GettingStarted/CreateButton.jpg) to add a new resource group
 - Now select your Resource Group you've just created so it will be housed under that specific group, which will make it easier to find to manage later incase you make multiple NSGs
@@ -60,8 +60,7 @@ then you are good to go!
 - Gif Tutorial ![Making A NSG GIF](./Resources/GettingStarted/MakingANSG.gif)	
 
 ### Adding a Virtual Network  
-
-- We will be creating a virtual network for our machines to be able to communicate through, this will be a VPN (Virtual Private Network). This means that only the machines on that network will be able to talk to each other because of the way we have configured our NSGs to only allow internal traffic between VMs
+>We will be creating a virtual network for our machines to be able to communicate through, this will be a VPN (Virtual Private Network). This means that only the machines on that network will be able to talk to each other because of the way we have configured our NSGs to only allow internal traffic between VMs
 - First from [Home Portal](https://portal.azure.com/#home) select *Virtual network*
 - Next Click on ![+Create](./Resources/GettingStarted/CreateButton.jpg) to add a new resource group
 - Now select your Resource Group you've just created so it will be housed under that specific group, which will make it easier to find to manage later incase you make multiple VNets
@@ -73,17 +72,17 @@ then you are good to go!
 - Gif Tutorial ![Making A VPN GIF](./Resources/GettingStarted/MakingAVPN.gif)  
 
 ### Adding a JumpBoxProvisioner Virtual Machine  
-
-- The first machine we are going to make will be a jumpbox machine that we will utilize as the administrator machine, this will be a close off machine that will allow only us to access the other VMs inside of our virtual need
+>The first machine we are going to make will be a jumpbox machine that we will utilize as the administrator machine, this will be a close off machine that will allow only us to access the other VMs inside of our virtual need
 - To make a new VM first start from [Home Portal](https://portal.azure.com/#home) and click on the *Virtual machines* button if you do not see it in the top like mine you can click on top search bar that reads: *Search resources, services, and docs (G+/)* and start typing in *Virtual machines* and it will pop up.
 - Next Click on ![+Create](./Resources/GettingStarted/CreateButton.jpg) to add a new resource group
 - Now select your Resource Group you've just created so it will be housed under that specific group, which will make it easier to find to manage later incase you make multiple VMs
 - Fillout the following options like so:
 	* Virtual machine name - *JumpBoxProvisioner*
-	* Region - same as resource group (In the Example GIF I slected US East 2 because my free trial is maxed out on the CPUs I can have in the (US) East US)
+	* Region - same as the resource group 
+	>(In the Example GIF I slected US East 2 because my free trial is maxed out on the CPUs I can have in the (US) East US)
 	* Avaliability opions - *No infrastructure redundancy required*
 	* Image - *Ubuntu Server 18.04 LTS -Gen1* (or the latest LTS at the time of reading this document)
-	* Size - *Standard_B1ms - 1 vcpu, 2 GiB memory($18.25/month)* (Note you might have to search and change the filters to find it)
+	* Size - *Standard_B1ms - 1 vcpu, 2 GiB memory* (Note you might have to search and change the filters to find it)
 	* Authentication type - *SSH public key*
 	* Username - *azureuser* (If you choose something different you will have to rememeber it and use it, since I will be refering to azureuser from this point foward)
 	* SSH public key source - *Use existing public key*
@@ -113,7 +112,7 @@ then you are good to go!
 
 # Step 2 Cloud Configuration <a name="Step2"></a>  
 >In this step we will be configuring all of the new resources we have created above in [Step 1 Cloud Setup](#Step1)
-### NSG Configuration
+### NSG Configuration <a name="NSGConfig"></a>  
 - From the [Home Portal](https://portal.azure.com/#home) navigate to *Resource Groups*
 - Next Navigate to your newly created Resource group
 - Now click on youe *JumpBoxProvisoner* VM
@@ -141,4 +140,57 @@ then you are good to go!
 	* Name: JumpboxInboundSSH
 - Click on Add
 - You can validate everything has worked correctly with the Resource Group Created Successfully popup that will be prompted afterwards
-- Gif Tutorial ![Making A Virtual Machine GIF](./Resources/GettingStarted/.gif)  
+- Gif Tutorial ![Making A Virtual Machine GIF](./Resources/GettingStarted/.gif) NEEDS RECORDED  
+
+### Connecting to your new VM  
+>Now that we have our VM and NSG set up we can now connect to it through SSH which you can find more information [here](https://en.wikipedia.org/wiki/Secure_Shell_Protocol)
+- If you don't have your Machine's Public IP copied down you can find it again here:
+	* From the [Home Portal](https://portal.azure.com/#home) navigate to *Resource Groups*
+	* Next Navigate to your newly created Resource group
+	* Now click on youe *JumpBoxProvisoner* VM
+	* Copy your Public IP listed on the right side you will need it later
+	* Where your public ip is  
+	![Public IP Image](./Resources/GettingStarted/PublicIP.jpg)  
+- Next Start by opening your Terminal or Gitbash depending on your system
+- Then type in
+`ssh azureuser@YOUR_VMs_PUBLIC_IP_ADDRESS`
+- If the connection times out head back to: [NSG Configuration](#NSGConfig) and double check the configuration to verify it is correct
+- It will ask you to allow the thumbprint hash, type in *yes* and press enter
+- If you see the left side of the Terminal change to `azureuser@YOUR_VMs_PUBLIC_IP_ADDRESS $` then you are all set to continue to the next step  
+
+### Adding Web Server VMs
+>Now that we have connected to our machine and understand basic configuration, we can now continue to add our Web VMs that our Web Portals will run on
+- First from [Home Portal](https://portal.azure.com/#home) select *Virtual machines*
+- Next Click on ![+Create](./Resources/GettingStarted/CreateButton.jpg) to add a new Virtual Machine
+- Now select your Resource Group you've just created so it will be housed under that specific group, which will make it easier to find to manage later incase you make multiple VMs
+- Fillout the following options like so:
+- Select the following Configurations
+	* Virtual machine name - *Web_1*
+	* Region - same as the resource group 
+	>(In the Example GIF I slected US East 2 because my free trial is maxed out on the CPUs I can have in the (US) East US)
+	* Avaliability opions - *Avalibility Set*
+	* Avaliability set - *Create new*
+		#### Create avaliability set
+		- Name: *WebServer_Availibilty_Set*
+	* Image - *Ubuntu Server 18.04 LTS -Gen1* (or the latest LTS at the time of reading this document)
+	* Size - *Standard_B2s - 2 vcpu, 4 GiB memory* (Note you might have to search and change the filters to find it)
+	* Authentication type - *SSH public key*
+	* Username - *azureuser* (If you choose something different you will have to rememeber it and use it, since I will be refering to azureuser from this point foward)
+	* SSH public key source - *Use existing public key*
+	## How to generate a SSH key
+		1. Launch GitBash/Terminal on your system
+		2. Type in the following command
+		`ssh-keygen`
+		3. simply press enter for all of the options until you finish which will look like so:
+		![SSH-Keygen finished](./Resources/GettingStarted/ssh-keygen.jpg)
+		4. How to print your public SSH key, paste the following command into your Gitbash/Terminal
+		`cat ~/.ssh/id_rsa.pub`
+		5. Copy the following message all the way from ssh-rsa to the end of the last line
+		6. Back in your Azure portal post your public SSH key into the SSH public key entry, it will tell if you have done something wrong with the SSH keygen at this time
+	* Public inbound ports - None
+- Swap to the *Networking* tab and set the following configurations
+	* Virtual network - Select your VNet you made earlier (If nothing is showing up make sure you have the correct Resource group selected)
+	* Public IP - Click on *Create new* and select the following configurations
+		* Select Static IP
+	* NIC Network security group - Advanced
+	* Under the new new Popup Configure network security group select the NSG you created earlier
