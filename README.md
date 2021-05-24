@@ -8,11 +8,13 @@
 
 ### Table of Contents
 
-[Prerequisites](#Prerequisites)
-[Step 1 Cloud Setup](#Step1)
-[Step 2 Cloud Configuration](#Step2)
+1. [Prerequisites](#Prerequisites)  
 
-## Cloud Computing is becoming more and more of a necessary tool set for many companies, Cloud Computing has opened many gates to make more resources readily available and more accessible then ever before. Along with these it has also opened more attack vectors for criminals and other hacktivist groups, while cloud computing is a revolutionary idea you must weight your risks and accurately judge the added risks that come with it. All the major Cloud Computing companies such as Azure, Google, and Amazon come with the basic toolsets to help harden and protect your systems if used correctly and managed thoroughly. In this documentation I will run you through the basics of cloud computing in a Microsoft Azure cloud environment, and some ways on how to help prevent attacks against your cloud VMs with basic cloud security  
+2. [Step 1 Cloud Setup](#Step1)  
+
+3. [Step 2 Cloud Configuration](#Step2)  
+
+### Cloud Computing is becoming more and more of a necessary tool set for many companies, Cloud Computing has opened many gates to make more resources readily available and more accessible then ever before. Along with these it has also opened more attack vectors for criminals and other hacktivist groups, while cloud computing is a revolutionary idea you must weight your risks and accurately judge the added risks that come with it. All the major Cloud Computing companies such as Azure, Google, and Amazon come with the basic toolsets to help harden and protect your systems if used correctly and managed thoroughly. In this documentation I will run you through the basics of cloud computing in a Microsoft Azure cloud environment, and some ways on how to help prevent attacks against your cloud VMs with basic cloud security  
 
 ---  
   
@@ -31,12 +33,11 @@
 3. If you are on Linux or Mac you're find but if you're on windows you can use almost any type of unix based terminal environment emulator, my favorite is: [GitBash]( https://git-scm.com/downloads) which comes as a separate download with the Git scm client, simply click to install GitBash when prompted through the Git Install. [Install Guide](https://www.educative.io/edpresso/how-to-install-git-bash-in-windows)
 4. A solid network connection is required since everything we will be doing is over the network via HTTP and SSH protocalls (We will go over these in later examples)
 5. Terminology
-
-- VM - Virtual Machine
-- VNet - Virtual Network
-- VPN - Virtual Private Network
-- NSG - Network Security Group
-- SSH - Secure Shell Protocol
+  - VM - Virtual Machine
+  - VNet - Virtual Network
+  - VPN - Virtual Private Network
+  - NSG - Network Security Group
+  - SSH - Secure Shell Protocol
 
 ---
 
@@ -196,31 +197,31 @@ then you are good to go!
 - If you haven't connect to your new jumpbox machine do so now here: [Connecting to your new VM](#ConnectToVM)
 - Once connected execute these terminal commands to update and upgrade our VMs Linux Packages
 
-`sudo apt-get update`
-`sudo apt-get upgrade -y`
+`sudo apt-get update`  
+`sudo apt-get upgrade -y`  
 
 - After it has finished we can start installing our software with the following commands
 
 - First we install Docker
-`sudo apt install docker.io`
+`sudo apt install docker.io`  
 - Next we can verify the service is running with the following command
-`sudo systemctl status docker`
+`sudo systemctl status docker`  
 
 - Finally we can install our Ansible service
-`sudo docker pull cyberxsecurity/ansible`
-`sudo docker run -ti cyberxsecurity/ansible:latest bash`
+`sudo docker pull cyberxsecurity/ansible`  
+`sudo docker run -ti cyberxsecurity/ansible:latest bash`  
 
 - To Leave the ansible container you can type in `exit` to leave
 
 - In order to reconnect you can run the following commands <a name="ReconnectAnsible"></a>
 
-- First double check there is a service running with
+- First double check there is a service running with  
 `sudo docker container list -a`
 
-- If it isn't running you can start the container with
+- If it isn't running you can start the container with  
 `sudo docker start <container_name>`
 
-- If your container is already running you can join it with
+- If your container is already running you can join it with  
 `sudo docker attach <container_name>`
 
 ### Generating Ansible SSH key <a name="AnsibleContainerSSH"></a>
